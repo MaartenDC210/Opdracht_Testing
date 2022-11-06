@@ -6,18 +6,14 @@ Suite Setup  Open My Website
 Suite Teardown  Close browser
 
 *** Variables ***
-${EMAIL_LOGIN_TXT}=       xpath://input[@id='SignInEmail']
-${PASSWORD_LOGIN_TXT}=    xpath://input[@id='SignInPassword']
-${LOGIN_BTN_TOP}=         xpath://button[@id='SignInButton']
-${LOGIN_ERROR}=           class:woocommerce-error
-${LOGIN_BTN}=             xpath://button[@id='SignInButtonComplete']
-${HAMBURGER}=             class:css-1idhddb
+${EMAIL_LOGIN_TXT}=             xpath://input[@id='SignInEmail']
+${PASSWORD_LOGIN_TXT}=          xpath://input[@id='SignInPassword']
+${LOGIN_BTN_TOP}=               xpath://button[@id='SignInButton']
+${LOGIN_BTN}=                   xpath://button[@id='SignInButtonComplete']
+${HAMBURGER}=                   class:css-1idhddb
+${ORDERS_PAGE_BUTTON_PROFILE}=  xpath://a[@href='#/profile']//button[@id='OrdersPageButton']
+${ORDERS_PAGE_BUTTON_ORDERS}=  xpath://a[@href='#/orders']//button[@id='OrdersPageButton']
 
-
-${EMAIL_CREATE_TXT}=      id:reg_email
-${EMAIL_CREATE_PASSW}=    id:reg_password
-${CREATE_ACCOUNT_BTN}=    name:register
-${CREATE_ACCOUNT_ERROR}=  class:woocommerce-error
 ${MOVIE_NAME_UPPER}=      name:movieNameToUpper
 
 
@@ -38,7 +34,7 @@ After Hiring A Movie Credits Are Removed
     Wait Until Element Is Visible  ${HAMBURGER}
     Sleep  5s
     Click Element  ${HAMBURGER}
-    Click Element  xpath://a[@href='#/profile']//button[@id='OrdersPageButton']
+    Click Element  ${ORDERS_PAGE_BUTTON_PROFILE}
     Sleep  3s
     ${credits}=  Get Text  css:body div[id='root'] div[class='App'] div div div[class='css-1jf7604'] div[id='SignIn'] div[class='css-kcntxh'] p:nth-child(8)
     ${creditsInt}=  Convert To Integer  ${credits}
@@ -57,8 +53,8 @@ After Hiring A Movie Credits Are Removed
     Comment  Check New Credit Total
     Wait Until Element Is Visible  ${HAMBURGER}
     Click Element  ${HAMBURGER}
-    Wait Until Element Is Visible  xpath://a[@href='#/profile']//button[@id='OrdersPageButton']
-    Click Element  xpath://a[@href='#/profile']//button[@id='OrdersPageButton']
+    Wait Until Element Is Visible  ${ORDERS_PAGE_BUTTON_PROFILE}
+    Click Element  ${ORDERS_PAGE_BUTTON_PROFILE}
     Sleep  5s
     ${newCredits}=  Get Text  css:body div[id='root'] div[class='App'] div div div[class='css-1jf7604'] div[id='SignIn'] div[class='css-kcntxh'] p:nth-child(8)
     ${newCreditsInt}=  Convert To Integer  ${newCredits}
@@ -68,8 +64,8 @@ After Hiring A Movie, The Movie Is In My List
     Sleep  2s
     Wait Until Element Is Visible  ${HAMBURGER}
     Click Element  ${HAMBURGER}
-    Wait Until Element Is Visible  xpath://a[@href='#/orders']//button[@id='OrdersPageButton']
-    Click Element  xpath://a[@href='#/orders']//button[@id='OrdersPageButton']
+    Wait Until Element Is Visible  ${ORDERS_PAGE_BUTTON_ORDERS}
+    Click Element  ${ORDERS_PAGE_BUTTON_ORDERS}
     Sleep  5s
     ${rentedMovieName}=  Get Text  xpath:/html[1]/body[1]/div[1]/div[1]/div[2]/div[3]/div[1]/div[1]/div[3]/p[1]
     Should Be Equal  ${MOVIE_NAME_UPPER}  ${rentedMovieName}

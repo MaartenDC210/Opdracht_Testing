@@ -9,15 +9,9 @@ Suite Teardown  Close browser
 ${EMAIL_LOGIN_TXT}=       xpath://input[@id='SignInEmail']
 ${PASSWORD_LOGIN_TXT}=    xpath://input[@id='SignInPassword']
 ${LOGIN_BTN_TOP}=         xpath://button[@id='SignInButton']
-${LOGIN_ERROR}=           class:woocommerce-error
 ${LOGIN_BTN}=             xpath://button[@id='SignInButtonComplete']
 ${HAMBURGER}=             class:css-1idhddb
 
-
-${EMAIL_CREATE_TXT}=      id:reg_email
-${EMAIL_CREATE_PASSW}=    id:reg_password
-${CREATE_ACCOUNT_BTN}=    name:register
-${CREATE_ACCOUNT_ERROR}=  class:woocommerce-error
 
 
 *** Test Cases ***
